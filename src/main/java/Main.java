@@ -16,6 +16,8 @@ public class Main
                 mainForm MainForm = new mainForm();
                 MainForm.setVisible(true);
 
+                viewForm ViewForm = new viewForm();
+                ViewForm.setVisible(true);
 
             }
         });
