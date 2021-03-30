@@ -19,6 +19,7 @@ public class mainForm extends JFrame{
 
         //this uses the form designer form
         add(rootPanel);
+
         setTitle("Main Page");
         setSize(400,600);
 
