@@ -13,12 +13,15 @@ public class Main
                 LoginForm loginForm = new LoginForm();
                 loginForm.setVisible(true);
 
-                mainForm MainForm = new mainForm();
-                MainForm.setVisible(true);
+                //mainForm MainForm = new mainForm();
+                //MainForm.setVisible(true);
 
-                viewForm ViewForm = new viewForm();
+                //viewForm ViewForm = new viewForm();
+                //ViewForm.setVisible(true);
 
-                ViewForm.setVisible(true);
+                //registrationForm RegistrationFrom = new registrationForm();
+                //RegistrationFrom.setVisible(true);
+
 
             }
         });
