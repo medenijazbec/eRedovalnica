@@ -10,7 +10,6 @@ public class registrationForm extends JFrame{
         setSize(400,600);
     }
 
-
     private JTextField nameField;
     private JTextField surnameField;
     private JTextField emailField;
