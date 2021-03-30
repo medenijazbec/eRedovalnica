@@ -32,7 +32,8 @@ public class LoginForm extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                JOptionPane.showMessageDialog(rootPane, "Button goes click");
+                registrationForm r = new registrationForm();
+                r.show();
             }
         });
     }
