@@ -24,7 +24,7 @@ public class LoginForm extends JFrame
         {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(rootPane, "Button goes click");
+                JOptionPane.showMessageDialog(rootPane, "Registracija uspešna!");
             }
         });
 
