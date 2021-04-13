@@ -12,13 +12,16 @@ public class registrationForm extends JFrame{
         setSize(400,600);
 
 
-        registrationButton.addActionListener(new ActionListener() {
+        registrationButton.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 String vsiKraji = Database.izpisKraja();
                 String[] tabelaKraji = vsiKraji.split(",");
 
-                for (String a:tabelaKraji) {
+                for (String a:tabelaKraji)
+                {
                     krajiBox.addItem(a);
                 }
             }
