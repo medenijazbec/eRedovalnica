@@ -11,7 +11,6 @@ public class registrationForm extends JFrame{
         setTitle("Main Page");
         setSize(400,600);
 
-
         registrationButton.addActionListener(new ActionListener()
         {
             @Override
