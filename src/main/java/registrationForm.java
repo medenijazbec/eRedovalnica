@@ -8,7 +8,10 @@ public class registrationForm extends JFrame{
         add(rootPanel);
         setTitle("Main Page");
         setSize(400,600);
+
+
     }
+
 
     private JTextField nameField;
     private JTextField surnameField;
