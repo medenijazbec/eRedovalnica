@@ -14,13 +14,11 @@ public class Database
         String user = "tgjeirvzipmyjp";
         String password = "aa125fa79f38a582e7956cb0a53b5772d346e65569e683341bf3580d6c66b8df";
         Connection con = null;
-
         try {
             con = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             System.out.println(e);
         }
-
         return con;
     }
 }
