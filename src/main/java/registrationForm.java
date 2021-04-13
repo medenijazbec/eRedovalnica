@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class registrationForm extends JFrame{
 
@@ -10,6 +12,17 @@ public class registrationForm extends JFrame{
         setSize(400,600);
 
 
+        registrationButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String vsiKraji = Database.izpisKraja();
+                String[] tabelaKraji = vsiKraji.split(",");
+
+                for (String a:tabelaKraji) {
+                    krajiBox.addItem(a);
+                }
+            }
+        });
     }
 
 
@@ -21,7 +34,7 @@ public class registrationForm extends JFrame{
     private JTextField phoneField;
     private JComboBox parentcomboBox;
     private JComboBox classcomboBox;
-    private JComboBox comboBox1;
+    private JComboBox krajiBox;
     private JButton registrationButton;
     private JPanel rootPanel;
 }
