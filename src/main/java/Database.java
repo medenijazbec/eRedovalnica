@@ -24,4 +24,32 @@ public class Database
 
         return con;
     }
+
+    public static String izpisKraja()
+    {
+        String Kraj, Posta, vrniKraj="";
+        String cmd = "SELECT * FROM kraji;";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+            // loop through the records
+            while (set.next())
+            {
+                Kraj = set.getString("naslov");
+                Posta = set.getString("posta");
+                vrniKraj = vrniKraj + " " + Kraj + " " + Posta + ",";
+            }
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return vrniKraj;
+    }
 }
