@@ -102,7 +102,7 @@ public class classes {
 
     public class dijaki
     {
-        int id_st;
+        int id_d;
         String ime;
         String priimek;
         String email;
@@ -114,10 +114,10 @@ public class classes {
         int kraj_id;
         int razred_id;
 
-        public dijaki(int _id_st, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
+        public dijaki(int _id_d, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
                         int _stars_id, int _razred_id, Byte _slika, int _kraj_id)
         {
-            id_st=_id_st;
+            id_d=_id_d;
             ime=_ime;
             priimek=_priimek;
             email=_email;
@@ -130,10 +130,10 @@ public class classes {
             razred_id=_razred_id;
         }
 
-        public dijaki(int _id_st, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
+        public dijaki(int _id_d, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
                         int _stars_id, int _razred_id, int _kraj_id)
         {
-            id_st=_id_st;
+            id_d=_id_d;
             ime=_ime;
             priimek=_priimek;
             email=_email;
@@ -148,7 +148,7 @@ public class classes {
         public String dijakiString()
         {
             String list;
-            list=(id_st+" "+ime+" "+priimek+" "+email+" "+geslo+" "+telefon+" "+datum_pridruzitve+" "+slika+" "+kraj_id+" "
+            list=(id_d+" "+ime+" "+priimek+" "+email+" "+geslo+" "+telefon+" "+datum_pridruzitve+" "+slika+" "+kraj_id+" "
             +razred_id+" "+stars_id);
             return list;
         }
@@ -156,7 +156,7 @@ public class classes {
 
     public class ucitelji
     {
-        int id_st;
+        int id_u;
         String ime;
         String priimek;
         String email;
@@ -165,9 +165,9 @@ public class classes {
         int razred_id;
         int kraj_id;
 
-        public ucitelji(int _id_st, String _ime, String _priimek, String _email, String _geslo, String _telefon, int _razred_id, int _kraj_id)
+        public ucitelji(int _id_u, String _ime, String _priimek, String _email, String _geslo, String _telefon, int _razred_id, int _kraj_id)
         {
-            id_st=_id_st;
+            id_u=_id_u;
             ime=_ime;
             priimek=_priimek;
             email=_email;
@@ -180,7 +180,61 @@ public class classes {
         public String uciteljiString()
         {
             String list;
-            list=(id_st+" "+ime+" "+priimek+" "+email+" "+geslo+" "+telefon+" "+kraj_id+" "+razred_id);
+            list=(id_u+" "+ime+" "+priimek+" "+email+" "+geslo+" "+telefon+" "+kraj_id+" "+razred_id);
+            return list;
+        }
+    }
+
+    public class ocene
+    {
+        int id_c;
+        String ime;
+        String priimek;
+        String email;
+        String geslo;
+        String telefon;
+        Date datum_pridruzitve;
+        Byte slika;
+        int stars_id;
+        int kraj_id;
+        int razred_id;
+
+        public ocene(int _id_c, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
+                      int _stars_id, int _razred_id, Byte _slika, int _kraj_id)
+        {
+            id_c=_id_c;
+            ime=_ime;
+            priimek=_priimek;
+            email=_email;
+            geslo=_geslo;
+            telefon=_telefon;
+            datum_pridruzitve=_datum_pridruzitve;
+            slika=_slika;
+            stars_id=_stars_id;
+            kraj_id=_kraj_id;
+            razred_id=_razred_id;
+        }
+
+        public ocene(int _id_c, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
+                      int _stars_id, int _razred_id, int _kraj_id)
+        {
+            id_c=_id_c;
+            ime=_ime;
+            priimek=_priimek;
+            email=_email;
+            geslo=_geslo;
+            telefon=_telefon;
+            datum_pridruzitve=_datum_pridruzitve;
+            stars_id=_stars_id;
+            kraj_id=_kraj_id;
+            razred_id=_razred_id;
+        }
+
+        public String oceneString()
+        {
+            String list;
+            list=(id_c+" "+ime+" "+priimek+" "+email+" "+geslo+" "+telefon+" "+datum_pridruzitve+" "+slika+" "+kraj_id+" "
+                    +razred_id+" "+stars_id);
             return list;
         }
     }
