@@ -49,7 +49,6 @@ public class Database
             //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
-
         return vrniKraj;
     }
 }
