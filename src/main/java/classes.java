@@ -3,20 +3,20 @@ import java.util.Date;
 
 public class classes {
 
-    public class locations
+    public class kraji
     {
         int id_k;
         String naslov;
         String posta;
 
-        public  locations(int _id_k, String _naslov, String _posta)
+        public  kraji(int _id_k, String _naslov, String _posta)
         {
             id_k=_id_k;
             naslov=_naslov;
             posta=_posta;
         }
 
-        public String StringLocations()
+        public String krajiString()
         {
             String list;
             list=(id_k+" "+naslov+" "+posta);
@@ -24,26 +24,26 @@ public class classes {
         }
     }
 
-    public class subjects
+    public class predmeti
     {
         int id_p;
         String naziv;
         String opis;
 
-        public subjects(int _id_p, String _naziv)
+        public predmeti(int _id_p, String _naziv)
         {
             id_p=_id_p;
             naziv=_naziv;
         }
 
-        public subjects(int _id_k, String _naslov, String _posta)
+        public predmeti(int _id_k, String _naslov, String _posta)
         {
             id_p=_id_k;
             naziv=_naslov;
             opis=_posta;
         }
 
-        public String StringSubjects()
+        public String predmetiString()
         {
             String list;
             list=(id_p+" "+naziv+" "+opis);
@@ -51,20 +51,20 @@ public class classes {
         }
     }
 
-    public class schoolClasses
+    public class razredi
     {
         int id_r;
         String naziv;
         String leto_razreda;
 
-        public  schoolClasses(int _id_r, String _naziv, String _leto_razreda)
+        public  razredi(int _id_r, String _naziv, String _leto_razreda)
         {
             id_r=_id_r;
             naziv=_naziv;
             leto_razreda=_leto_razreda;
         }
 
-        public String StringSchoolClasses()
+        public String razrediString()
         {
             String list;
             list=(id_r+" "+naziv+" "+leto_razreda);
@@ -72,7 +72,7 @@ public class classes {
         }
     }
 
-    public class Parents
+    public class starsi
     {
         int id_s;
         String ime;
@@ -82,7 +82,7 @@ public class classes {
         String telefon;
         int kraj_id;
 
-        public Parents(int _id_s, String _ime, String _priimek, String _email, String _geslo, String _telefon)
+        public starsi(int _id_s, String _ime, String _priimek, String _email, String _geslo, String _telefon)
         {
             id_s=_id_s;
             ime=_ime;
@@ -92,7 +92,7 @@ public class classes {
             telefon=_telefon;
         }
 
-        public String SchoolParents()
+        public String starsiString()
         {
             String list;
             list=(id_s+" "+ime+" "+priimek+" "+email+" "+geslo+" "+telefon+" "+kraj_id);
@@ -100,7 +100,7 @@ public class classes {
         }
     }
 
-    public class Students
+    public class dijaki
     {
         int id_st;
         String ime;
@@ -114,7 +114,7 @@ public class classes {
         int kraj_id;
         int razred_id;
 
-        public Students(int _id_st, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
+        public dijaki(int _id_st, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
                         int _stars_id, int _razred_id, Byte _slika, int _kraj_id)
         {
             id_st=_id_st;
@@ -130,7 +130,7 @@ public class classes {
             razred_id=_razred_id;
         }
 
-        public Students(int _id_st, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
+        public dijaki(int _id_st, String _ime, String _priimek, String _email, String _geslo, String _telefon, Date _datum_pridruzitve,
                         int _stars_id, int _razred_id, int _kraj_id)
         {
             id_st=_id_st;
@@ -145,7 +145,7 @@ public class classes {
             razred_id=_razred_id;
         }
 
-        public String Students()
+        public String dijakiString()
         {
             String list;
             list=(id_st+" "+ime+" "+priimek+" "+email+" "+geslo+" "+telefon+" "+datum_pridruzitve+" "+slika+" "+kraj_id+" "
@@ -153,6 +153,7 @@ public class classes {
             return list;
         }
     }
+
 
 
 
