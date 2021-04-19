@@ -52,4 +52,40 @@ public class Database
 
         return vrniKraj;
     }
+
+    public static void posodobiKraj(String naslovKraja, String postaKraj)
+    {
+        String cmd = "UPDATE kraji SET naslov = " + naslovKraja + ", posta = " + postaKraj;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void izbrisKraj(String naslovKraja, String postaKraj)
+    {
+        String cmd = "DELETE FROM kraji WHERE naslov = " + naslovKraja + ", posta = " + postaKraj;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
 }

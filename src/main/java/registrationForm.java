@@ -11,18 +11,20 @@ public class registrationForm extends JFrame{
         setTitle("Main Page");
         setSize(400,600);
 
+        String vsiKraji = Database.izpisKraja();
+        String[] tabelaKraji = vsiKraji.split(",");
+
+        for (String a:tabelaKraji)
+        {
+            krajiBox.addItem(a);
+        }
+
         registrationButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                String vsiKraji = Database.izpisKraja();
-                String[] tabelaKraji = vsiKraji.split(",");
 
-                for (String a:tabelaKraji)
-                {
-                    krajiBox.addItem(a);
-                }
             }
         });
     }
