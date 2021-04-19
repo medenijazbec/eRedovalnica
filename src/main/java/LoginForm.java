@@ -23,8 +23,10 @@ public class LoginForm extends JFrame
         prijavaButton.addActionListener(new ActionListener()
         {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(rootPane, "Registracija uspešna!");
+            public void actionPerformed(ActionEvent e)
+            {
+                Database.connect();
+                JOptionPane.showMessageDialog(rootPane, "Povezava uspešna!");
             }
         });
 
