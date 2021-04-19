@@ -88,4 +88,22 @@ public class Database
             System.out.println(e.getMessage());
         }
     }
+
+    public static void vnosKraj(String naslovKraja, String postaKraj)
+    {
+        String cmd = "INSERT INTO kraji (naslov, posta) VALUES (" + naslovKraja + "," + postaKraj + ");";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
 }
