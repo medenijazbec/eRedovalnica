@@ -4,14 +4,12 @@ import java.awt.event.ActionListener;
 
 public class LoginForm extends JFrame
 {
-
-
-
     private JButton prijavaButton;
     private JTextField emailField;
     private JPasswordField gesloField;
     private JPanel rootPanel;
     private JButton ustvariRacunButton;
+    private JButton pozabljenoGesloButton;
 
     public LoginForm()
     {
@@ -36,6 +34,15 @@ public class LoginForm extends JFrame
             {
                 registrationForm r = new registrationForm();
                 r.show();
+            }
+        });
+
+        pozabljenoGesloButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                Reset_password reset = new Reset_password();
+                reset.show();
             }
         });
     }
