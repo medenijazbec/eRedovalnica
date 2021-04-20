@@ -24,7 +24,7 @@ public class LoginForm extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 Database.connect();
-                JOptionPane.showMessageDialog(rootPane, "Povezava uspešna!");
+                JOptionPane.showMessageDialog(rootPanel, "Povezava uspešna!");
             }
         });
 

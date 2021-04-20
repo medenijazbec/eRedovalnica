@@ -24,9 +24,30 @@ public class registrationForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                if ((nameField.getText().length()==0) && (surnameField.getText().length()==0) && (emailField.getText().length()==0)
+                    && (textField3.getText().length()==0) && (passwordField.getText().length()==0) && (phoneField.getText().length()==0))
+                {
+                    JOptionPane.showMessageDialog(rootPanel, "Polja so obvezna!");
+                }
 
+                else
+                {
+                    switch (parentcomboBox.getToolTipText())
+                    {
+                        case "Starš":
+
+                            break;
+
+                        case "Učitelj":
+                            break;
+
+                        case "Dijak":
+                            break;
+                    }
+                }
             }
         });
+
         preglejKrajeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -5,6 +5,7 @@ import java.util.logging.LogManager;
 
 public class Locations extends JFrame
 {
+    public String naslov_k, posta_k;
     private JTextField imeKraj;
     private JTextField postaKraj;
     private JButton izbrišiKrajButton;
@@ -21,6 +22,23 @@ public class Locations extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                if ((imeKraj.getText().length()==0) && (postaKraj.getText().length()==0))
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Polji sta obvezni!");
+                }
+
+                else
+                {
+                    Database.izbrisKraj(imeKraj.getText(), postaKraj.getText());
+                    JOptionPane.showMessageDialog(rootPane, "Kraj je bil uspešno izbrisan!");
+                }
+            }
+        });
+
+        posodobiKrajButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 if ((imeKraj.getText().length()==0) && (postaKraj.getText().length()==0))
                 {
                     JOptionPane.showMessageDialog(rootPane, "Polji sta obvezni!");

@@ -106,4 +106,9 @@ public class Database
             System.out.println(e.getMessage());
         }
     }
+
+    public static void Registracija_ucitelji(String imee, String priimekk, String emaill, String gesloo, String telefonn, int razred_idd, int kraj_idd)
+    {
+
+    }
 }
