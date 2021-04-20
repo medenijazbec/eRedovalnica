@@ -55,7 +55,7 @@ public class Database
 
     public static void posodobiKraj(String naslovKraja, String postaKraj)
     {
-        String cmd = "UPDATE kraji SET naslov = " + naslovKraja + ", posta = " + postaKraj;
+        String cmd = "UPDATE kraji SET naslov = '" + naslovKraja + "', posta = '" + postaKraj + "';";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -73,7 +73,7 @@ public class Database
 
     public static void izbrisKraj(String naslovKraja, String postaKraj)
     {
-        String cmd = "DELETE FROM kraji WHERE naslov = " + naslovKraja + ", posta = " + postaKraj;
+        String cmd = "DELETE FROM kraji WHERE naslov = '" + naslovKraja + "';";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -91,7 +91,7 @@ public class Database
 
     public static void vnosKraj(String naslovKraja, String postaKraj)
     {
-        String cmd = "INSERT INTO kraji (naslov, posta) VALUES (" + naslovKraja + "," + postaKraj + ");";
+        String cmd = "INSERT INTO kraji (naslov, posta) VALUES ('" + naslovKraja + "','" + postaKraj + "');";
 
         try (Connection con = connect();
              Statement st = con.createStatement();

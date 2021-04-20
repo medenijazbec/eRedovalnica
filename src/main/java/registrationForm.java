@@ -27,6 +27,13 @@ public class registrationForm extends JFrame{
 
             }
         });
+        preglejKrajeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Locations l = new Locations();
+                l.show();
+            }
+        });
     }
 
 
@@ -41,4 +48,5 @@ public class registrationForm extends JFrame{
     private JComboBox krajiBox;
     private JButton registrationButton;
     private JPanel rootPanel;
+    private JButton preglejKrajeButton;
 }
