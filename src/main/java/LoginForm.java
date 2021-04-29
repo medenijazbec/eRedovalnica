@@ -12,6 +12,7 @@ public class LoginForm extends JFrame
     private JPanel rootPanel;
     private JButton ustvariRacunButton;
     private JButton pozabljenoGesloButton;
+    private JComboBox izbiraBox;
 
     public static String Kodiraj (String password) {
         try {
@@ -48,8 +49,13 @@ public class LoginForm extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                if ((emailField.getText().length()==0) || (gesloField.getText().length()==0))
+                {
+                    JOptionPane.showMessageDialog(rootPanel, "Polji sta obvezni!");
+                }
+
                 Database.connect();
-                JOptionPane.showMessageDialog(rootPanel, "Geslo je: " + Kodiraj(gesloField.getText()));
+                Kodiraj(gesloField.getText());
             }
         });
 
