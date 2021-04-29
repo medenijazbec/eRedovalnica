@@ -24,17 +24,7 @@ public class registrationForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                 switch (parentcomboBox.getToolTipText())
-                 {
-                     case "Starš":
-                         break;
 
-                     case "Dijak":
-                         break;
-
-                     default:
-
-                 }
             }
         });
     }
