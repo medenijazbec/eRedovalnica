@@ -27,7 +27,7 @@ public class Database
 
     public static String izpisKraja()
     {
-        String Kraj, Posta, vrniKraj="";
+        String Kraj, vrniKraj="";
         String cmd = "SELECT * FROM kraji;";
 
         try (Connection con = connect();
@@ -39,8 +39,7 @@ public class Database
             while (set.next())
             {
                 Kraj = set.getString("naslov");
-                Posta = set.getString("posta");
-                vrniKraj = vrniKraj + " " + Kraj + " " + Posta + ",";
+                vrniKraj = vrniKraj + " " + Kraj + ",";
             }
         }
 
@@ -160,7 +159,7 @@ public class Database
 
     public static int Vrni_id_ucitelj_kraj(String naslovv)
     {
-        int id = 0;
+        int idd = 0;
         String cmd = "SELECT id_k FROM kraji WHERE naslov = '" + naslovv + "';";
 
         try (Connection con = connect();
@@ -171,7 +170,7 @@ public class Database
             // loop through the records
             while (set.next())
             {
-                id = set.getInt("id_k");
+                idd = set.getInt("id_k");
             }
         }
 
@@ -181,6 +180,33 @@ public class Database
             System.out.println(e.getMessage());
         }
 
-        return id;
+        return idd;
+    }
+
+    public static String izpisRazredov()
+    {
+        String Razred, vrniR="";
+        String cmd = "SELECT * FROM razredi;";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+            // loop through the records
+            while (set.next())
+            {
+                Razred = set.getString("naziv");
+                vrniR = vrniR + " " + Razred + ",";
+            }
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return vrniR;
     }
 }

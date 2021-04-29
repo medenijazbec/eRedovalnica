@@ -45,6 +45,14 @@ public class registrationForm extends JFrame
             krajiBox.addItem(a);
         }
 
+        String vsiRazredi = Database.izpisRazredov();
+        String[] tabelaRazredi = vsiRazredi.split(",");
+
+        for (String a:tabelaRazredi)
+        {
+            classcomboBox.addItem(a);
+        }
+
         registrationButton.addActionListener(new ActionListener()
         {
             @Override
@@ -65,12 +73,11 @@ public class registrationForm extends JFrame
                         case "Učitelj":
                             String razred = ((JTextField)classcomboBox.getEditor().getEditorComponent()).getText();
                             String kraj = ((JTextField)krajiBox.getEditor().getEditorComponent()).getText();
-                            String kraj_zares[] = kraj.split(" ");
                             int id_razreda = Database.Vrni_id_ucitelj_razred(razred);
-                            int id_kraja = Database.Vrni_id_ucitelj_kraj(kraj_zares[0]);
+                            int id_kraja = Database.Vrni_id_ucitelj_kraj(kraj);
+                            JOptionPane.showMessageDialog(rootPanel, Kodiraj(passwordField1.getText()) + " " + id_razreda + " " + id_kraja);
                             ucitelji ucitelj = new ucitelji(nameField.getText(), surnameField.getText(), emailField.getText(),
                                     Kodiraj(passwordField1.getText()), phoneField.getText(), id_razreda, id_kraja);
-                            JOptionPane.showMessageDialog(rootPanel, Kodiraj(passwordField1.getText()) + " " + id_razreda + " " + kraj_zares[0]);
                             break;
 
                         case "Dijak":
