@@ -106,4 +106,29 @@ public class Database
             System.out.println(e.getMessage());
         }
     }
+
+    public static int Preveri_ucitelja_registracija()
+    {
+        String cmd = "SELECT * FROM Preveri_ucitelja_register()";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+            // loop through the records
+            while (set.next())
+            {
+
+            }
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return 1;
+    }
 }

@@ -30,7 +30,9 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <showVerticalLines value="false"/>
+        </properties>
       </component>
       <component id="a2162" class="javax.swing.JLabel" binding="username">
         <constraints>
