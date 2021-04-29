@@ -11,14 +11,14 @@ public class starsi
     String telefon;
     int kraj_id;
 
-    public starsi(int _id_s, String _ime, String _priimek, String _email, String _geslo, String _telefon)
+    public starsi(String _ime, String _priimek, String _email, String _geslo, String _telefon, int _kraj_id)
     {
-        id_s=_id_s;
         ime=_ime;
         priimek=_priimek;
         email=_email;
         geslo=_geslo;
         telefon=_telefon;
+        kraj_id = _kraj_id;
     }
 
     public String starsiString()

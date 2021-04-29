@@ -63,15 +63,24 @@ public class registrationForm extends JFrame
                     switch (typedText)
                     {
                         case "Učitelj":
+                            String razred = ((JTextField)classcomboBox.getEditor().getEditorComponent()).getText();
+                            String kraj = ((JTextField)krajiBox.getEditor().getEditorComponent()).getText();
+                            String kraj_zares[] = kraj.split(" ");
+                            int id_razreda = Database.Vrni_id_ucitelj_razred(razred);
+                            int id_kraja = Database.Vrni_id_ucitelj_kraj(kraj_zares[0]);
                             ucitelji ucitelj = new ucitelji(nameField.getText(), surnameField.getText(), emailField.getText(),
-                                    Kodiraj(passwordField1.getText()), phoneField.getText(), 1, 6);
-                            JOptionPane.showMessageDialog(rootPanel, Kodiraj(passwordField1.getText()));
+                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_razreda, id_kraja);
+                            JOptionPane.showMessageDialog(rootPanel, Kodiraj(passwordField1.getText()) + " " + id_razreda + " " + kraj_zares[0]);
                             break;
 
                         case "Dijak":
                             break;
 
                         default:
+                            String krajj = ((JTextField)krajiBox.getEditor().getEditorComponent()).getText();
+                            int id_krajaa = Database.Vrni_id_ucitelj_kraj(krajj);
+                            starsi stars = new starsi(nameField.getText(), surnameField.getText(), emailField.getText(),
+                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_krajaa);
                             break;
                     }
                 }

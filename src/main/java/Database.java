@@ -55,7 +55,7 @@ public class Database
 
     public static void posodobiKraj(String naslovKraja, String postaKraj)
     {
-        String cmd = "UPDATE kraji SET naslov = " + naslovKraja + ", posta = " + postaKraj;
+        String cmd = "UPDATE kraji SET naslov = '" + naslovKraja + "', posta = '" + postaKraj + "';";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -73,7 +73,7 @@ public class Database
 
     public static void izbrisKraj(String naslovKraja, String postaKraj)
     {
-        String cmd = "DELETE FROM kraji WHERE naslov = " + naslovKraja + ", posta = " + postaKraj;
+        String cmd = "DELETE FROM kraji WHERE naslov = '" + naslovKraja + "', posta = '" + postaKraj + "';";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -91,7 +91,7 @@ public class Database
 
     public static void vnosKraj(String naslovKraja, String postaKraj)
     {
-        String cmd = "INSERT INTO kraji (naslov, posta) VALUES (" + naslovKraja + "," + postaKraj + ");";
+        String cmd = "INSERT INTO kraji (naslov, posta) VALUES ('" + naslovKraja + "','" + postaKraj + "');";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -130,5 +130,57 @@ public class Database
         }
 
         return 1;
+    }
+
+    public static int Vrni_id_ucitelj_razred(String nazivv)
+    {
+        int id = 0;
+        String cmd = "SELECT id_r FROM razredi WHERE naziv = '" + nazivv + "';";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+            // loop through the records
+            while (set.next())
+            {
+                id = set.getInt("id_r");
+            }
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return id;
+    }
+
+    public static int Vrni_id_ucitelj_kraj(String naslovv)
+    {
+        int id = 0;
+        String cmd = "SELECT id_k FROM kraji WHERE naslov = '" + naslovv + "';";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+            // loop through the records
+            while (set.next())
+            {
+                id = set.getInt("id_k");
+            }
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return id;
     }
 }
