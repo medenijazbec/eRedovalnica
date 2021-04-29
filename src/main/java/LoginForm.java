@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class LoginForm extends JFrame
 {
@@ -10,6 +12,29 @@ public class LoginForm extends JFrame
     private JPanel rootPanel;
     private JButton ustvariRacunButton;
     private JButton pozabljenoGesloButton;
+
+    public static String Kodiraj (String password) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+
+            messageDigest.update(password.getBytes());
+
+            byte[] resultByteArray = messageDigest.digest();
+
+            StringBuilder sb = new StringBuilder();
+
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
 
     public LoginForm()
     {
@@ -24,7 +49,7 @@ public class LoginForm extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 Database.connect();
-                JOptionPane.showMessageDialog(rootPanel, "Povezava uspešna!");
+                JOptionPane.showMessageDialog(rootPanel, "Geslo je: " + Kodiraj(gesloField.getText()));
             }
         });
 
@@ -46,7 +71,6 @@ public class LoginForm extends JFrame
             }
         });
     }
-
 }
 
 
