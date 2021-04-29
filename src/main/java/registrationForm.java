@@ -1,8 +1,34 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-public class registrationForm extends JFrame{
+public class registrationForm extends JFrame
+{
+    public static String Kodiraj (String password)
+    {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+
+            messageDigest.update(password.getBytes());
+
+            byte[] resultByteArray = messageDigest.digest();
+
+            StringBuilder sb = new StringBuilder();
+
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
 
     public registrationForm()
     {
@@ -24,6 +50,38 @@ public class registrationForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                if ((nameField.getText().length()==0) || (surnameField.getText().length()==0) || (emailField.getText().length()==0)
+                        || (passwordField1.getText().length()==0))
+                {
+                    JOptionPane.showMessageDialog(rootPanel, "Polja so obvezna!");
+                }
+
+                else
+                {
+                    String typedText = ((JTextField)parentcomboBox.getEditor().getEditorComponent()).getText();
+
+                    switch (typedText)
+                    {
+                        case "Učitelj":
+                            ucitelji ucitelj = new ucitelji(nameField.getText(), surnameField.getText(), emailField.getText(),
+                                    Kodiraj(passwordField1.getText()), phoneField.getText(), 1, 6);
+                            JOptionPane.showMessageDialog(rootPanel, Kodiraj(passwordField1.getText()));
+                            break;
+
+                        case "Dijak":
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+        });
+
+        registrationButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
 
             }
         });
@@ -41,4 +99,5 @@ public class registrationForm extends JFrame{
     private JComboBox krajiBox;
     private JButton registrationButton;
     private JPanel rootPanel;
+    private JPasswordField passwordField1;
 }
