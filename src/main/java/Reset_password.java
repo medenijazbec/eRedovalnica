@@ -1,14 +1,41 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.LogManager;
 
 public class Reset_password extends JFrame
 {
+    public static String Kodiraj (String password)
+    {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+
+            messageDigest.update(password.getBytes());
+
+            byte[] resultByteArray = messageDigest.digest();
+
+            StringBuilder sb = new StringBuilder();
+
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
     private JTextField EmailField;
     private JPasswordField passwordField;
     private JButton ponastaviGesloButton;
     private JPanel ResetPassword;
+    private JComboBox comboBox1;
 
     public Reset_password()
     {
@@ -26,9 +53,31 @@ public class Reset_password extends JFrame
 
                 else
                 {
-                    JOptionPane.showMessageDialog(ResetPassword, "Posodobitev gesla uspešna! Vračamo vas na prijavo!");
-                    LoginForm l = new LoginForm();
-                    l.show();
+                    String typedText = ((JTextField)comboBox1.getEditor().getEditorComponent()).getText();
+
+                    switch (typedText)
+                    {
+                        case "Učitelj":
+                            Database.geslo_Ucitelji(EmailField.getText(), Kodiraj(passwordField.getText()));
+                            JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
+                            LoginForm l = new LoginForm();
+                            l.show();
+                            break;
+
+                        case "Dijak":
+                            Database.geslo_dijaki(EmailField.getText(), Kodiraj(passwordField.getText()));
+                            JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
+                            LoginForm lll = new LoginForm();
+                            lll.show();
+                            break;
+
+                        default:
+                            Database.geslo_starsi(EmailField.getText(), Kodiraj(passwordField.getText()));
+                            JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
+                            LoginForm ll = new LoginForm();
+                            ll.show();
+                            break;
+                    }
                 }
             }
         });

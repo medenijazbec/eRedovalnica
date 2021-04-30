@@ -209,4 +209,59 @@ public class Database
 
         return vrniR;
     }
+
+    public static void geslo_Ucitelji(String naslovv, String gesloo)
+    {
+        String Razred, vrniR="";
+        String cmd = "SELECT * FROM Posodobi_geslo_ucitelji('" + naslovv + "','" + gesloo + "');";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void geslo_starsi(String naslovv, String gesloo)
+    {
+        String cmd = "SELECT * FROM Posodobi_geslo_starsi('" + naslovv + "','" + gesloo + "');";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void geslo_dijaki(String naslovv, String gesloo)
+    {
+        String cmd = "SELECT * FROM Posodobi_geslo_dijakii('" + naslovv + "','" + gesloo + "');";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+        }
+
+        catch (SQLException e)
+        {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
 }
