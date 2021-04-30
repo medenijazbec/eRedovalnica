@@ -59,24 +59,54 @@ public class Reset_password extends JFrame
                     switch (typedText)
                     {
                         case "Učitelj":
-                            Database.geslo_Ucitelji(EmailField.getText(), Kodiraj(passwordField.getText()));
-                            JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
-                            LoginForm l = new LoginForm();
-                            l.show();
+                            int resultat = Database.geslo_Ucitelji(EmailField.getText(), Kodiraj(passwordField.getText()));
+
+                            if (resultat > 0) {
+                                JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
+                                LoginForm lll = new LoginForm();
+                                lll.show();
+                            }
+
+                            else
+                            {
+                                EmailField.setText("");
+                                passwordField.setText("");
+                                JOptionPane.showMessageDialog(ResetPassword, "Učitelj z vpisanim naslovom ne obstaja! Poskusite znova!");
+                            }
                             break;
 
                         case "Dijak":
-                            Database.geslo_dijaki(EmailField.getText(), Kodiraj(passwordField.getText()));
-                            JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
-                            LoginForm lll = new LoginForm();
-                            lll.show();
+                            int rezultat = Database.geslo_dijaki(EmailField.getText(), Kodiraj(passwordField.getText()));
+
+                            if (rezultat > 0) {
+                                JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
+                                LoginForm lll = new LoginForm();
+                                lll.show();
+                            }
+
+                            else
+                            {
+                                EmailField.setText("");
+                                passwordField.setText("");
+                                JOptionPane.showMessageDialog(ResetPassword, "Dijak z vpisanim naslovom ne obstaja! Poskusite znova!");
+                            }
                             break;
 
-                        default:
-                            Database.geslo_starsi(EmailField.getText(), Kodiraj(passwordField.getText()));
-                            JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
-                            LoginForm ll = new LoginForm();
-                            ll.show();
+                        case "Starš":
+                            int rezultatt = Database.geslo_starsi(EmailField.getText(), Kodiraj(passwordField.getText()));
+
+                            if (rezultatt > 0) {
+                                JOptionPane.showMessageDialog(ResetPassword, "Geslo uspešno posodobljeno! Vračamo vas na prijavo!");
+                                LoginForm lll = new LoginForm();
+                                lll.show();
+                            }
+
+                            else
+                            {
+                                EmailField.setText("");
+                                passwordField.setText("");
+                                JOptionPane.showMessageDialog(ResetPassword, "Starš z vpisanim naslovom ne obstaja! Poskusite znova!");
+                            }
                             break;
                     }
                 }

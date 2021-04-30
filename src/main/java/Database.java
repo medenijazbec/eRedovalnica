@@ -201,55 +201,73 @@ public class Database
         return vrniR;
     }
 
-    public static void geslo_Ucitelji(String naslovv, String gesloo)
+    public static int geslo_Ucitelji(String naslovv, String gesloo)
     {
-        String cmd = "SELECT Posodobi_geslo_ucitelji('" + naslovv + "','" + gesloo + "');";
+        String cmd = "SELECT Posodobi_geslo_ucitelj('" + naslovv + "','" + gesloo + "');";
+        int id_u = -1;
 
         try (Connection con = connect();
              Statement st = con.createStatement();
              ResultSet set = st.executeQuery(cmd))
         {
-
+            while (set.next())
+            {
+                id_u = set.getInt(1);
+            }
         }
 
         catch (SQLException e)
         {
             System.out.println(e.getMessage());
         }
+
+        return id_u;
     }
 
-    public static void geslo_starsi(String naslovv, String gesloo)
+    public static int geslo_starsi(String naslovv, String gesloo)
     {
-        String cmd = "SELECT Posodobi_geslo_starsi('" + naslovv + "','" + gesloo + "');";
+        String cmd = "SELECT Posodobi_geslo_starsekk('" + naslovv + "','" + gesloo + "');";
+        int id_s = -1;
 
         try (Connection con = connect();
              Statement st = con.createStatement();
              ResultSet set = st.executeQuery(cmd))
         {
-
+            while (set.next())
+            {
+                id_s = set.getInt(1);
+            }
         }
 
         catch (SQLException e)
         {
             System.out.println(e.getMessage());
         }
+
+        return id_s;
     }
 
-    public static void geslo_dijaki(String naslovv, String gesloo)
+    public static int geslo_dijaki(String naslovv, String gesloo)
     {
-        String cmd = "SELECT Posodobi_geslo_dijakii('" + naslovv + "','" + gesloo + "');";
+        String cmd = "SELECT Posodobi_geslo_dijak('" + naslovv + "','" + gesloo + "');";
+        int id_d = -1;
 
         try (Connection con = connect();
              Statement st = con.createStatement();
              ResultSet set = st.executeQuery(cmd))
         {
-
+            while (set.next())
+            {
+                id_d = set.getInt(1);
+            }
         }
 
         catch (SQLException e)
         {
             System.out.println(e.getMessage());
         }
+
+        return id_d;
     }
 
     public static int Prijava_ucitelji(String email, String password)
