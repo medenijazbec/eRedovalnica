@@ -35,7 +35,6 @@ public class Database
              ResultSet set = st.executeQuery(cmd))
         {
 
-            // loop through the records
             while (set.next())
             {
                 Kraj = set.getString("naslov");
@@ -45,7 +44,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
 
@@ -65,7 +63,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
     }
@@ -83,7 +80,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
     }
@@ -101,7 +97,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
     }
@@ -124,7 +119,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
 
@@ -150,7 +144,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
 
@@ -176,7 +169,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
 
@@ -203,7 +195,6 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
 
@@ -212,8 +203,7 @@ public class Database
 
     public static void geslo_Ucitelji(String naslovv, String gesloo)
     {
-        String Razred, vrniR="";
-        String cmd = "SELECT * FROM Posodobi_geslo_ucitelji('" + naslovv + "','" + gesloo + "');";
+        String cmd = "SELECT Posodobi_geslo_ucitelji('" + naslovv + "','" + gesloo + "');";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -224,14 +214,13 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
     }
 
     public static void geslo_starsi(String naslovv, String gesloo)
     {
-        String cmd = "SELECT * FROM Posodobi_geslo_starsi('" + naslovv + "','" + gesloo + "');";
+        String cmd = "SELECT Posodobi_geslo_starsi('" + naslovv + "','" + gesloo + "');";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -242,14 +231,13 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
     }
 
     public static void geslo_dijaki(String naslovv, String gesloo)
     {
-        String cmd = "SELECT * FROM Posodobi_geslo_dijakii('" + naslovv + "','" + gesloo + "');";
+        String cmd = "SELECT Posodobi_geslo_dijakii('" + naslovv + "','" + gesloo + "');";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -260,8 +248,67 @@ public class Database
 
         catch (SQLException e)
         {
-            //Messages.databaseReadingError(database, e.getMessage());
             System.out.println(e.getMessage());
         }
+    }
+
+    public static int Prijava_ucitelji(String email, String password)
+    {
+        String cmd = "SELECT id_u FROM ucitelji WHERE email = '" + email + "' AND geslo = '" + password + "';";
+        int id = 0;
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next())
+            {
+                id = set.getInt("id_u");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return id;
+    }
+
+    public static int Prijava_dijaki(String email, String password)
+    {
+        String cmd = "SELECT id_d FROM dijaki WHERE email = '" + email + "' AND geslo = '" + password + "';";
+        int id = 0;
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next())
+            {
+                id = set.getInt("id_u");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return id;
+    }
+
+    public static int Prijava_starsi(String email, String password)
+    {
+        String cmd = "SELECT id_s FROM starsi WHERE email = '" + email + "' AND geslo = '" + password + "';";
+        int id = 0;
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next())
+            {
+                id = set.getInt("id_u");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return id;
     }
 }

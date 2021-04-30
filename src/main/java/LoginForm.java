@@ -54,8 +54,49 @@ public class LoginForm extends JFrame
                     JOptionPane.showMessageDialog(rootPanel, "Polji sta obvezni!");
                 }
 
-                Database.connect();
-                Kodiraj(gesloField.getText());
+                else
+                    {
+                        String Status = ((JTextField)izbiraBox.getEditor().getEditorComponent()).getText();
+
+                        switch (Status)
+                        {
+                            case "Učitelj":
+                                int ucitelj_id = Database.Prijava_ucitelji(emailField.getText(), Kodiraj(gesloField.getText()));
+                                if (ucitelj_id != 0)
+                                {
+                                    JOptionPane.showMessageDialog(rootPanel, "Prijava uspešna!");
+                                }
+                                else
+                                    {
+                                        JOptionPane.showMessageDialog(rootPanel, "Prijava ni uspešna! Poskusite znova!");
+                                }
+                                break;
+
+                            case "Dijak":
+                                int dijak_id = Database.Prijava_dijaki(emailField.getText(), Kodiraj(gesloField.getText()));
+                                if (dijak_id != 0)
+                                {
+                                    JOptionPane.showMessageDialog(rootPanel, "Prijava uspešna!");
+                                }
+                                else
+                                {
+                                    JOptionPane.showMessageDialog(rootPanel, "Prijava ni uspešna! Poskusite znova!");
+                                }
+                                break;
+
+                            case "Starš":
+                                int stars_id = Database.Prijava_starsi(emailField.getText(), Kodiraj(gesloField.getText()));
+                                if (stars_id != 0)
+                                {
+                                    JOptionPane.showMessageDialog(rootPanel, "Prijava uspešna!");
+                                }
+                                else
+                                {
+                                    JOptionPane.showMessageDialog(rootPanel, "Prijava ni uspešna! Poskusite znova!");
+                                }
+                                break;
+                        }
+                }
             }
         });
 
