@@ -34,7 +34,7 @@ public class registrationForm extends JFrame
     {
         //this uses the form designer form
         add(rootPanel);
-        setTitle("Main Page");
+        setTitle("Registracija");
         setSize(400,600);
 
         String vsiKraji = Database.izpisKraja();
@@ -77,7 +77,7 @@ public class registrationForm extends JFrame
                             int id_kraja = Database.Vrni_id_ucitelj_kraj(kraj);
                             JOptionPane.showMessageDialog(rootPanel, Kodiraj(passwordField1.getText()) + " " + id_razreda + " " + id_kraja);
                             ucitelji ucitelj = new ucitelji(nameField.getText(), surnameField.getText(), emailField.getText(),
-                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_razreda, id_kraja);
+                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_razreda, 9);
                             break;
 
                         case "Dijak":
@@ -87,7 +87,7 @@ public class registrationForm extends JFrame
                             String krajj = ((JTextField)krajiBox.getEditor().getEditorComponent()).getText();
                             int id_krajaa = Database.Vrni_id_ucitelj_kraj(krajj);
                             starsi stars = new starsi(nameField.getText(), surnameField.getText(), emailField.getText(),
-                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_krajaa);
+                                    Kodiraj(passwordField1.getText()), phoneField.getText(), 9);
                             break;
                     }
                 }

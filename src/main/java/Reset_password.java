@@ -40,6 +40,7 @@ public class Reset_password extends JFrame
     public Reset_password()
     {
         add(ResetPassword);
+        setTitle("Ponastavitev gesla");
 
         ponastaviGesloButton.addActionListener(new ActionListener()
         {

@@ -11,7 +11,7 @@ public class viewForm extends JFrame{
     public viewForm() {
 
         add(rootPanel);
-        setTitle("Main Page");
+        setTitle("Pregled ocen");
         setSize(400,600);
 
         refreshButton.addActionListener(new ActionListener() {

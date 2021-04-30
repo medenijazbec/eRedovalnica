@@ -41,7 +41,7 @@ public class LoginForm extends JFrame
     {
         //this uses the form designer form
         add(rootPanel);
-        setTitle("Login title");
+        setTitle("Login");
         setSize(400,600);
 
         prijavaButton.addActionListener(new ActionListener()
