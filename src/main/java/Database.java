@@ -38,7 +38,7 @@ public class Database
             while (set.next())
             {
                 Kraj = set.getString("naslov");
-                vrniKraj = vrniKraj + " " + Kraj + ",";
+                vrniKraj = vrniKraj + Kraj + ",";
             }
         }
 
@@ -127,8 +127,8 @@ public class Database
 
     public static int Vrni_id_ucitelj_razred(String nazivv)
     {
-        int id = 0;
         String cmd = "SELECT id_r FROM razredi WHERE naziv = '" + nazivv + "';";
+        int id = -1;
 
         try (Connection con = connect();
              Statement st = con.createStatement();
@@ -152,15 +152,13 @@ public class Database
 
     public static int Vrni_id_ucitelj_kraj(String naslovv)
     {
-        int idd = 0;
         String cmd = "SELECT id_k FROM kraji WHERE naslov = '" + naslovv + "';";
+        int idd = -1;
 
         try (Connection con = connect();
              Statement st = con.createStatement();
              ResultSet set = st.executeQuery(cmd))
         {
-
-            // loop through the records
             while (set.next())
             {
                 idd = set.getInt("id_k");
@@ -189,7 +187,7 @@ public class Database
             while (set.next())
             {
                 Razred = set.getString("naziv");
-                vrniR = vrniR + " " + Razred + ",";
+                vrniR = vrniR + Razred + ",";
             }
         }
 
@@ -321,6 +319,50 @@ public class Database
             while (set.next())
             {
                 id = set.getInt("id_u");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return id;
+    }
+
+    public static int Ucitelji_registracija(String ime, String priimek, String email, String password,
+    String telefon, int razred, int kraj)
+    {
+        String cmd = "SELECT Preveri_ucitelja_registracijaaaa('" + ime + "','" + priimek + "','" + email + "','" + password + "','"
+                + telefon + "','" + razred + "','" + kraj + "');";
+        int id = -1;
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next())
+            {
+                id = set.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return id;
+    }
+
+    public static int Starsi_registracija(String ime, String priimek, String email, String password,
+                                            String telefon, int kraj)
+    {
+        String cmd = "SELECT Preveri_stars_registracijaa('" + ime + "','" + priimek + "','" + email + "','" + password + "','"
+                + telefon + "','" + kraj + "');";
+        int id = -1;
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next())
+            {
+                id = set.getInt(1);
             }
 
         } catch (SQLException e) {

@@ -75,19 +75,51 @@ public class registrationForm extends JFrame
                             String kraj = ((JTextField)krajiBox.getEditor().getEditorComponent()).getText();
                             int id_razreda = Database.Vrni_id_ucitelj_razred(razred);
                             int id_kraja = Database.Vrni_id_ucitelj_kraj(kraj);
-                            JOptionPane.showMessageDialog(rootPanel, Kodiraj(passwordField1.getText()) + " " + id_razreda + " " + id_kraja);
                             ucitelji ucitelj = new ucitelji(nameField.getText(), surnameField.getText(), emailField.getText(),
-                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_razreda, 9);
+                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_razreda, id_kraja);
+                            ucitelj.geslo = Kodiraj(passwordField1.getText());
+                            int rezultat = Database.Ucitelji_registracija(ucitelj.ime, ucitelj.priimek,
+                                    ucitelj.email, Kodiraj(passwordField1.getText()), ucitelj.telefon, ucitelj.razred_id, ucitelj.kraj_id);
+                            if (rezultat > 0)
+                            {
+                                JOptionPane.showMessageDialog(rootPanel, "Registracija uspešna!");
+                            }
+
+                            else
+                            {
+                                JOptionPane.showMessageDialog(rootPanel, "Učitelj z vpisanim naslovom že obstaja! Poskusite znova!");
+                                nameField.setText("");
+                                surnameField.setText("");
+                                emailField.setText("");
+                                passwordField1.setText("");
+                                phoneField.setText("");
+                            }
                             break;
 
                         case "Dijak":
                             break;
 
-                        default:
+                        case "Starš":
                             String krajj = ((JTextField)krajiBox.getEditor().getEditorComponent()).getText();
                             int id_krajaa = Database.Vrni_id_ucitelj_kraj(krajj);
                             starsi stars = new starsi(nameField.getText(), surnameField.getText(), emailField.getText(),
-                                    Kodiraj(passwordField1.getText()), phoneField.getText(), 9);
+                                    Kodiraj(passwordField1.getText()), phoneField.getText(), id_krajaa);
+                            int rezultatt = Database.Starsi_registracija(stars.ime, stars.priimek,
+                                    stars.email, Kodiraj(passwordField1.getText()), stars.telefon, stars.kraj_id);
+                            if (rezultatt > 0)
+                            {
+                                JOptionPane.showMessageDialog(rootPanel, "Registracija uspešna!");
+                            }
+
+                            else
+                            {
+                                JOptionPane.showMessageDialog(rootPanel, "Starš z vpisanim naslovom že obstaja! Poskusite znova!");
+                                nameField.setText("");
+                                surnameField.setText("");
+                                emailField.setText("");
+                                passwordField1.setText("");
+                                phoneField.setText("");
+                            }
                             break;
                     }
                 }
