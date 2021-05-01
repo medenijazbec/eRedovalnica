@@ -298,7 +298,7 @@ public class Database
 
             while (set.next())
             {
-                id = set.getInt("id_u");
+                id = set.getInt("id_d");
             }
 
         } catch (SQLException e) {
@@ -318,7 +318,7 @@ public class Database
 
             while (set.next())
             {
-                id = set.getInt("id_u");
+                id = set.getInt("id_s");
             }
 
         } catch (SQLException e) {

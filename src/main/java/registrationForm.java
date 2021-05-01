@@ -36,6 +36,7 @@ public class registrationForm extends JFrame
         add(rootPanel);
         setTitle("Registracija");
         setSize(400,600);
+        classcomboBox.setEnabled(false);
 
         String vsiKraji = Database.izpisKraja();
         String[] tabelaKraji = vsiKraji.split(",");
@@ -104,6 +105,7 @@ public class registrationForm extends JFrame
                             int id_krajaa = Database.Vrni_id_ucitelj_kraj(krajj);
                             starsi stars = new starsi(nameField.getText(), surnameField.getText(), emailField.getText(),
                                     Kodiraj(passwordField1.getText()), phoneField.getText(), id_krajaa);
+                            stars.kraj_id = id_krajaa;
                             int rezultatt = Database.Starsi_registracija(stars.ime, stars.priimek,
                                     stars.email, Kodiraj(passwordField1.getText()), stars.telefon, stars.kraj_id);
                             if (rezultatt > 0)
@@ -131,6 +133,30 @@ public class registrationForm extends JFrame
             public void actionPerformed(ActionEvent e)
             {
 
+            }
+        });
+        classcomboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
+        parentcomboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String text = ((JTextField)parentcomboBox.getEditor().getEditorComponent()).getText();
+
+                if (text == "Starš")
+                {
+                    classcomboBox.setEnabled(false);
+                }
+
+                else
+                {
+                    classcomboBox.setEnabled(true);
+                }
             }
         });
     }
