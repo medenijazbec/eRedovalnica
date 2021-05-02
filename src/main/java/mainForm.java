@@ -3,16 +3,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class mainForm extends JFrame{
-    private JComboBox uciteljComboBox;
     private JComboBox predmetComboBox;
     private JTextField nazivTextField;
-    private JTextField opisTextField;
-    private JTextField datumOddajeTextField;
-    private JTextField tipOceneTextField;
-    private JTextField ocenaTextField;
     private JComboBox dijakComboBox;
     private JButton dodajOcenoButton;
     private JPanel rootPanel;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JTextArea textArea1;
+    private JLabel oseba;
 
 
     public mainForm() {
@@ -28,7 +27,15 @@ public class mainForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                JOptionPane.showMessageDialog(rootPanel, "Button goes click");
+
+            }
+        });
+
+        dodajOcenoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
             }
         });
     }
