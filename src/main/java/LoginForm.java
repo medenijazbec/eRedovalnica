@@ -95,6 +95,11 @@ public class LoginForm extends JFrame
                                 if (stars_id != 0)
                                 {
                                     JOptionPane.showMessageDialog(rootPanel, "Prijava uspešna!");
+                                    starsi s = new starsi();
+                                    s.email = emailField.getText();
+                                    String email_s = Database.Starsi_seja(s.email);
+                                    viewForm v = new viewForm(email_s);
+                                    v.show();
                                 }
 
                                 else

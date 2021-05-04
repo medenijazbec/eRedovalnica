@@ -8,8 +8,9 @@ public class viewForm extends JFrame{
     private JLabel username;
     private JButton refreshButton;
 
-    public viewForm() {
-
+    public viewForm(String email)
+    {
+        username.setText(email);
         add(rootPanel);
         setTitle("Pregled ocen");
         setSize(400,600);

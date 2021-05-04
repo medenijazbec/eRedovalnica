@@ -21,6 +21,11 @@ public class starsi
         kraj_id = _kraj_id;
     }
 
+    public starsi()
+    {
+
+    }
+
     public String starsiString()
     {
         String list;
