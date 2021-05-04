@@ -14,11 +14,11 @@ public class mainForm extends JFrame{
     private JLabel oseba;
 
 
-    public mainForm() {
+    public mainForm(String email) {
 
         //this uses the form designer form
         add(rootPanel);
-
+        oseba.setText("Prijavljeni ste kot: " + email);
         setTitle("Main Page");
         setSize(400,600);
 

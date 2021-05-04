@@ -65,7 +65,13 @@ public class LoginForm extends JFrame
                                 if (ucitelj_id != 0)
                                 {
                                     JOptionPane.showMessageDialog(rootPanel, "Prijava uspešna!");
+                                    ucitelji u = new ucitelji();
+                                    u.email = emailField.getText();
+                                    String email_u = Database.Ucitelj_seja(u.email);
+                                    mainForm m = new mainForm(email_u);
+                                    m.show();
                                 }
+
                                 else
                                     {
                                         JOptionPane.showMessageDialog(rootPanel, "Prijava ni uspešna! Poskusite znova!");
@@ -90,6 +96,7 @@ public class LoginForm extends JFrame
                                 {
                                     JOptionPane.showMessageDialog(rootPanel, "Prijava uspešna!");
                                 }
+
                                 else
                                 {
                                     JOptionPane.showMessageDialog(rootPanel, "Prijava ni uspešna! Poskusite znova!");

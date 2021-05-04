@@ -22,6 +22,11 @@ public class ucitelji
         kraj_id=_kraj_id;
     }
 
+    public ucitelji()
+    {
+
+    }
+
     public String uciteljiString()
     {
         String list;
