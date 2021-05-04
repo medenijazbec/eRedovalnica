@@ -329,7 +329,7 @@ public class Database
     }
 
     public static int Ucitelji_registracija(String ime, String priimek, String email, String password,
-    String telefon, int razred, int kraj)
+                                            String telefon, int razred, int kraj)
     {
         String cmd = "SELECT Preveri_ucitelja_registracijaaaa('" + ime + "','" + priimek + "','" + email + "','" + password + "','"
                 + telefon + "','" + razred + "','" + kraj + "');";
@@ -351,7 +351,7 @@ public class Database
     }
 
     public static int Starsi_registracija(String ime, String priimek, String email, String password,
-                                            String telefon, int kraj)
+                                          String telefon, int kraj)
     {
         String cmd = "SELECT Preveri_stars_registracijaa('" + ime + "','" + priimek + "','" + email + "','" + password + "','"
                 + telefon + "','" + kraj + "');";
@@ -375,24 +375,24 @@ public class Database
     public static String Ucitelj_seja(String email)
     {
         int id = 0;
-    String cmd = "SELECT * FROM ucitelji WHERE email = '" + email + "';";
-    String ime="", priimek="", skupaj="";
+        String cmd = "SELECT * FROM ucitelji WHERE email = '" + email + "';";
+        String ime="", priimek="", skupaj="";
 
-    try (Connection con = connect();
-         Statement st = con.createStatement();
-         ResultSet set = st.executeQuery(cmd)) {
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
 
-        while (set.next())
-        {
-            ime = set.getString(2);
-            priimek = set.getString(3);
+            while (set.next())
+            {
+                ime = set.getString(2);
+                priimek = set.getString(3);
+            }
+
+            skupaj = ime + " " + priimek;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-
-        skupaj = ime + " " + priimek;
-
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    }
 
         return skupaj;
     }
@@ -420,5 +420,30 @@ public class Database
         }
 
         return skupaj;
+    }
+
+    public static String Izpis_dijaki()
+    {
+        String Dijak_ime="", Dijak_priimek="", vrniDijak="";
+        String cmd = "SELECT * FROM dijaki;";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            while (set.next())
+            {
+                Dijak_ime = set.getString("ime");
+                Dijak_priimek = set.getString("priimek");
+                vrniDijak =  vrniDijak + Dijak_ime + " " + Dijak_priimek + ",";
+            }
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return vrniDijak;
     }
 }

@@ -22,6 +22,9 @@ public class mainForm extends JFrame{
         setTitle("Main Page");
         setSize(400,600);
 
+        String vsiDijaki = Database.Izpis_dijaki();
+        String[] tabelaDijaki = vsiDijaki.split(",");
+
 
         dodajOcenoButton.addActionListener(new ActionListener() {
             @Override
