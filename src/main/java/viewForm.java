@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class viewForm extends JFrame{
+public class viewForm extends JFrame
+{
     private JPanel rootPanel;
     private JTable gradeTable;
     private JLabel username;

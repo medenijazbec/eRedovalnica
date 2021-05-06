@@ -471,4 +471,53 @@ public class Database
 
         return vrniR;
     }
+
+    public static String izpisDijakov()
+    {
+        String Razred, vrniR="", ime="";
+        String cmd = "SELECT * FROM dijaki;";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            // loop through the records
+            while (set.next())
+            {
+                ime = set.getString("ime");
+                Razred = set.getString("priimek");
+                vrniR = vrniR + ime + " " + Razred + ",";
+            }
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return vrniR;
+    }
+
+    public static void Vnos_ocene(String naziv, String opis)
+    {
+        int id = 0;
+        String cmd = "SELECT * FROM ucitelji;";
+        String ime="", priimek="", skupaj="";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next())
+            {
+                ime = set.getString(2);
+                priimek = set.getString(3);
+            }
+
+            skupaj = ime + " " + priimek;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

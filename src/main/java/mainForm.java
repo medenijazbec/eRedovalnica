@@ -13,8 +13,8 @@ public class mainForm extends JFrame{
     private JTextArea textArea1;
     private JLabel oseba;
 
-
-    public mainForm(String email) {
+    public mainForm(String email)
+    {
 
         //this uses the form designer form
         add(rootPanel);
@@ -28,6 +28,14 @@ public class mainForm extends JFrame{
         for (String a:tabelaRazredi)
         {
             predmetComboBox.addItem(a);
+        }
+
+        String vsiDijaki = Database.izpisDijakov();
+        String[] tabelaDijaki = vsiDijaki.split(",");
+
+        for (String a:tabelaDijaki)
+        {
+            dijakComboBox.addItem(a);
         }
 
         dodajOcenoButton.addActionListener(new ActionListener() {
