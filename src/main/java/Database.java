@@ -446,4 +446,29 @@ public class Database
 
         return vrniDijak;
     }
+
+    public static String izpisPredmetov()
+    {
+        String Razred, vrniR="";
+        String cmd = "SELECT * FROM predmeti;";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            // loop through the records
+            while (set.next())
+            {
+                Razred = set.getString("naziv");
+                vrniR = vrniR + Razred + ",";
+            }
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return vrniR;
+    }
 }
