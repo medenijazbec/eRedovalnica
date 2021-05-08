@@ -47,16 +47,14 @@ public class mainForm extends JFrame{
                 String naziv = nazivTextField.getText();
                 String opis = textArea1.getText();
                 String ocena_tip = ((JTextField)comboBox2.getEditor().getEditorComponent()).getText();
-                String ocena = ((JTextField)comboBox1.getEditor().getEditorComponent()).getText();
-                int ocenaa = Integer.parseInt(ocena);
                 String predmet = ((JTextField)predmetComboBox.getEditor().getEditorComponent()).getText();
                 String dijak = ((JTextField)dijakComboBox.getEditor().getEditorComponent()).getText();
                 String[] ime_dijaka = dijak.split(" ");
                 int ucitelj_id = Database.Vrni_id_ucitelj_ocena(Ime_Priimek[0], Ime_Priimek[1]);
                 int predmet_id = Database.Vrni_id_predmet_ocena(predmet);
                 int dijak_id = Database.Vrni_id_dijak_ocena(ime_dijaka[0], ime_dijaka[1]);
-                Database.vnosOcena(naziv, opis, ocena_tip, ocenaa, ucitelj_id, predmet_id, dijak_id);
-                JOptionPane.showMessageDialog(rootPanel, "Dodali ste oceno " + ocena + ", za dijaka/injo + " + ime_dijaka[0] + " " + ime_dijaka[1] + ", za predmet + " + predmet + ".");
+                Database.vnosOcena(naziv, opis, ocena_tip, 5, ucitelj_id, predmet_id, dijak_id);
+                JOptionPane.showMessageDialog(rootPanel, "Dodali ste oceno " + 5 + ", za dijaka/injo + " + ime_dijaka[0] + " " + ime_dijaka[1] + ", za predmet + " + predmet + ".");
             }
         });
 
