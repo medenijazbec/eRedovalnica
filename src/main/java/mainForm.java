@@ -18,7 +18,7 @@ public class mainForm extends JFrame{
 
         //this uses the form designer form
         add(rootPanel);
-        oseba.setText("Prijavljeni ste kot: " + email);
+        oseba.setText(email);
         setTitle("Main Page");
         setSize(400,600);
 
@@ -42,7 +42,21 @@ public class mainForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
-
+                String ime = oseba.getText();
+                String[] Ime_Priimek = ime.split(" ");
+                String naziv = nazivTextField.getText();
+                String opis = textArea1.getText();
+                String ocena_tip = ((JTextField)comboBox2.getEditor().getEditorComponent()).getText();
+                String ocena = ((JTextField)comboBox1.getEditor().getEditorComponent()).getText();
+                int ocenaa = Integer.parseInt(ocena);
+                String predmet = ((JTextField)predmetComboBox.getEditor().getEditorComponent()).getText();
+                String dijak = ((JTextField)dijakComboBox.getEditor().getEditorComponent()).getText();
+                String[] ime_dijaka = dijak.split(" ");
+                int ucitelj_id = Database.Vrni_id_ucitelj_ocena(Ime_Priimek[0], Ime_Priimek[1]);
+                int predmet_id = Database.Vrni_id_predmet_ocena(predmet);
+                int dijak_id = Database.Vrni_id_dijak_ocena(ime_dijaka[0], ime_dijaka[1]);
+                Database.vnosOcena(naziv, opis, ocena_tip, ocenaa, ucitelj_id, predmet_id, dijak_id);
+                JOptionPane.showMessageDialog(rootPanel, "Dodali ste oceno " + ocena + ", za dijaka/injo + " + ime_dijaka[0] + " " + ime_dijaka[1] + ", za predmet + " + predmet + ".");
             }
         });
 

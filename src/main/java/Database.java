@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Database
 {
@@ -519,5 +521,91 @@ public class Database
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void vnosOcena(String naziv, String opis, String tip_ocene, int ocena, int ucitelj_id, int predmet_id, int dijak_id)
+    {
+        String cmd = "INSERT INTO ocena (naziv, opis, datum_oddaje, tip_ocene, ocena, ucitelj_id, predmet_id, dijak_id) VALUES ('" + naziv + "','" + opis + "','" + LocalDateTime.now() + "','" + tip_ocene + "','" + ocena + "','" + ucitelj_id + "','" + predmet_id + "','" + dijak_id + "');";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static int Vrni_id_ucitelj_ocena(String ime, String priimek)
+    {
+        String cmd = "SELECT id_u FROM ucitelji WHERE ime = '" + ime + "' AND priimek = '" + priimek + "';";
+        int idd = -1;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            while (set.next())
+            {
+                idd = set.getInt("id_u");
+            }
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return idd;
+    }
+
+    public static int Vrni_id_dijak_ocena(String ime, String priimek)
+    {
+        String cmd = "SELECT id_d FROM dijaki WHERE ime = '" + ime + "' AND priimek = '" + priimek + "';";
+        int idd = -1;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            while (set.next())
+            {
+                idd = set.getInt("id_d");
+            }
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return idd;
+    }
+
+    public static int Vrni_id_predmet_ocena(String naziv)
+    {
+        String cmd = "SELECT id_p FROM predmeti WHERE naziv = '" + naziv + "';";
+        int idd = -1;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            while (set.next())
+            {
+                idd = set.getInt("id_p");
+            }
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return idd;
     }
 }
