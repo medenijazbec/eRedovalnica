@@ -525,7 +525,7 @@ public class Database
 
     public static void vnosOcena(String naziv, String opis, String tip_ocene, int ocena, int ucitelj_id, int predmet_id, int dijak_id)
     {
-        String cmd = "INSERT INTO ocena (naziv, opis, datum_oddaje, tip_ocene, ocena, ucitelj_id, predmet_id, dijak_id) VALUES ('" + naziv + "','" + opis + "','" + LocalDateTime.now() + "','" + tip_ocene + "','" + ocena + "','" + ucitelj_id + "','" + predmet_id + "','" + dijak_id + "');";
+        String cmd = "INSERT INTO ocene (naziv, opis, datum_oddaje, tip_ocene, ocena, ucitelj_id, predmet_id, dijak_id) VALUES ('" + naziv + "','" + opis + "','" + LocalDateTime.now() + "','" + tip_ocene + "','" + ocena + "','" + ucitelj_id + "','" + predmet_id + "','" + dijak_id + "');";
 
         try (Connection con = connect();
              Statement st = con.createStatement();
