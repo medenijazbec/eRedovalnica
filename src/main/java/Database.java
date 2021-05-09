@@ -608,4 +608,29 @@ public class Database
 
         return idd;
     }
+
+    public static String Dijak_seja(String email)
+    {
+        int id = 0;
+        String cmd = "SELECT * FROM dijaki WHERE email = '" + email + "';";
+        String ime="", priimek="", skupaj="";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next())
+            {
+                ime = set.getString(2);
+                priimek = set.getString(3);
+            }
+
+            skupaj = ime + " " + priimek;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return skupaj;
+    }
 }

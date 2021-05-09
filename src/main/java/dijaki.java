@@ -43,6 +43,11 @@ public class dijaki
         razred_id=_razred_id;
     }
 
+    public dijaki()
+    {
+
+    }
+
     public String dijakiString()
     {
         String list;
