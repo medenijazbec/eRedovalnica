@@ -633,4 +633,73 @@ public class Database
 
         return skupaj;
     }
+
+    public static int Vrni_id_stars(String ime, String priimek)
+    {
+        int id = 0;
+        String cmd = "SELECT id_s FROM starsi WHERE ime = '" + ime + "' AND priimek = '" + priimek + "';";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            while (set.next())
+            {
+                id = set.getInt(0);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return id;
+    }
+
+    public static String Vrni_dijaka(int id)
+    {
+        String cmd = "SELECT * FROM dijaki WHERE stars_id = '" + id + "';";
+        String ime="", priimek="", skupaj="";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            while (set.next())
+            {
+                ime = set.getString(2);
+                priimek = set.getString(3);
+            }
+
+            skupaj = ime + " " + priimek;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return skupaj;
+    }
+
+    public static String Vrni_ocene()
+    {
+        String cmd = "SELECT * FROM ocene WHERE;";
+        int ocena;
+        String skupaj="";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd))
+        {
+            while (set.next())
+            {
+                ocena = set.getInt("ocena");
+                String nova_ocena = ocena + " ";
+                skupaj = skupaj + nova_ocena;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return skupaj;
+    }
 }
